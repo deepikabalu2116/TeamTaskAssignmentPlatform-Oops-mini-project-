@@ -1,0 +1,30 @@
+package miniproject;
+
+import java.io.*;
+
+public class mod2 {
+    public static void saveTaskToFile(String title, String desc) {
+        try (FileWriter fw = new FileWriter("tasks.txt", true)) {
+            fw.write(title + " - " + desc + "\n");
+            System.out.println("✅ Task saved to file successfully!");
+        } catch (IOException e) {
+            System.out.println("❌ Error saving task: " + e.getMessage());
+        }
+    }
+
+    public static void readTasksFromFile() {
+        try (BufferedReader br = new BufferedReader(new FileReader("tasks.txt"))) {
+            String line;
+            System.out.println("\n📂 Tasks from file:");
+            while ((line = br.readLine()) != null)
+                System.out.println(line);
+        } catch (IOException e) {
+            System.out.println("⚠ No file found or empty list.");
+        }
+    }
+
+    public static void main(String[] args) {
+        saveTaskToFile("Database Setup", "Configure MySQL schema");
+        readTasksFromFile();
+    }
+}
