@@ -1,0 +1,23 @@
+package miniproject;
+
+public class MainApp {
+    public static void main(String[] args) {
+        System.out.println("🚀 Launching Team Task Assignment Platform...");
+
+        // Step 1: OOP core entities
+        mod1.main(null);
+
+        // Step 2: File Handling
+        mod2.saveTaskToFile("API Design", "Create REST endpoints");
+        mod2.readTasksFromFile();
+
+        // Step 3: Multi-threading
+        mod3.main(null);
+
+        // Step 4: JDBC setup
+        mod4.dbConnect();
+
+        // Step 5: GUI
+        mod5.main(null);
+    }
+}
