@@ -1,0 +1,36 @@
+package miniproject;
+
+import java.util.*;
+
+class TaskUpdater<T> extends Thread {
+    private List<T> tasks;
+    private String member;
+
+    public TaskUpdater(List<T> tasks, String member) {
+        this.tasks = tasks;
+        this.member = member;
+    }
+
+    @Override
+    public void run() {
+        for (T task : tasks) {
+            System.out.println(member + " updating task: " + task);
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                System.out.println("Thread interrupted!");
+            }
+        }
+    }
+}
+
+public class mod3 {
+    public static void main(String[] args) {
+        List<String> tasks = Arrays.asList("UI Design", "API Development", "Testing");
+        TaskUpdater<String> member1 = new TaskUpdater<>(tasks, "Achu");
+        TaskUpdater<String> member2 = new TaskUpdater<>(tasks, "Mani");
+
+        member1.start();
+        member2.start();
+    }
+}
