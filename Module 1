@@ -1,0 +1,39 @@
+package miniproject;
+
+class User {
+    private String name;
+    private String role;
+
+    public User(String name, String role) {
+        this.name = name;
+        this.role = role;
+    }
+
+    public String getName() { return name; }
+    public String getRole() { return role; }
+}
+
+class Task {
+    private String title;
+    private String description;
+    private String status;
+
+    public Task(String title, String description) {
+        this.title = title;
+        this.description = description;
+        this.status = "Pending";
+    }
+
+    public void setStatus(String status) { this.status = status; }
+    public String getStatus() { return status; }
+    public String getTitle() { return title; }
+    public String getDescription() { return description; }
+}
+
+public class mod1 {
+    public static void main(String[] args) {
+        User user1 = new User("Achu", "Team Leader");
+        Task t1 = new Task("Design UI", "Create the layout for dashboard");
+        System.out.println(user1.getName() + " assigned task: " + t1.getTitle());
+    }
+}
