@@ -1,0 +1,54 @@
+package miniproject;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class mod5 extends JFrame {
+    JTextField titleField;
+    JTextArea descField;
+    JButton addButton, showButton;
+
+    public mod5() {
+        setTitle("🧩 Team Task Assignment");
+        setSize(400, 350);
+        setLayout(new FlowLayout());
+
+        add(new JLabel("Task Title:"));
+        titleField = new JTextField(20);
+        add(titleField);
+
+        add(new JLabel("Description:"));
+        descField = new JTextArea(5, 20);
+        add(new JScrollPane(descField));
+
+        addButton = new JButton("Add Task");
+        showButton = new JButton("Show Tasks");
+        add(addButton);
+        add(showButton);
+
+        addButton.addActionListener(e -> {
+            String title = titleField.getText().trim();
+            String desc = descField.getText().trim();
+            if (!title.isEmpty() && !desc.isEmpty()) {
+                mod4.insertTask(title, desc);
+                JOptionPane.showMessageDialog(this, "✅ Task added to database!");
+                titleField.setText("");
+                descField.setText("");
+            } else {
+                JOptionPane.showMessageDialog(this, "⚠ Please fill in all fields!");
+            }
+        });
+
+        showButton.addActionListener(e -> {
+            mod4.readTasks();
+            JOptionPane.showMessageDialog(this, "📋 Check console for all tasks!");
+        });
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new mod5();
+    }
+}
